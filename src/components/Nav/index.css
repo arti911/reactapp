@@ -1,0 +1,21 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 10vh;
+  padding: 0 15px;
+  background: rgb(98, 114, 119);
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .nav {
+    padding: 0 30px;
+  }
+}
+
+.nav__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}

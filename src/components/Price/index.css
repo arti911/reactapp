@@ -1,4 +1,4 @@
-.App {
+.price {
   display: grid;
   align-content: start;
   gap: 35px;
@@ -6,19 +6,19 @@
 }
 
 @media (min-width: 768px) {
-  .App {
+  .price {
     padding: 50px 30px;
   }
 }
 
-.App__container {
+.price__container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-auto-rows: 150px;
   gap: 15px;
 }
 
-.App__select {
+.price__select {
   width: 100%;
   padding: 15px;
   border-radius: 15px;
