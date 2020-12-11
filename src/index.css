@@ -16,11 +16,11 @@
   box-sizing: border-box;
 }
 
-body {
+/* body {
   background-color: var(--color-darl-green);
-}
+} */
 
-#root {
+/* #root {
   width: calc(100% - 30px);
   height: 100vh;
   display: grid;
@@ -28,9 +28,9 @@ body {
   justify-items: center;
   gap: 30px;
   margin: 0 auto;
-}
+} */
 
-button {
+/* button {
   height: 55px;
   border: 0;
   border-radius: 15px;
@@ -109,4 +109,4 @@ input:valid + span {
 .set-balance-form {
   display: grid;
   gap: 10px;
-}
+} */
