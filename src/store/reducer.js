@@ -9,7 +9,7 @@ const reducer = (state = initState, action) => {
     case ADD_CARD:
       return {
         ...state,
-        cards: [action.card],
+        cards: [...state.cards, action.card],
       };
     default:
       return state;

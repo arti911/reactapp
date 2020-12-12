@@ -9,6 +9,8 @@ const AddCardForm = (props) => {
 
   const onSubmit = (data) => {
     console.log(data);
+    props.onAddCard(data);
+    props.onCloseModal(false);
   };
 
   useEffect(() => {

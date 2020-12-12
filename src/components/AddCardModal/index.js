@@ -16,7 +16,11 @@ const AddCardModal = (props) => {
       footer={null}
       onCancel={onCloseModal}
     >
-      <AddCardForm triggerReset={props.visible} />
+      <AddCardForm
+        triggerReset={props.visible}
+        onAddCard={props.onAddCard}
+        onCloseModal={props.onCloseModal}
+      />
     </Modal>
   );
 };
