@@ -3,7 +3,7 @@ $parent: add-card-form;
 .#{$parent} {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 25px;
+  gap: 10px;
 
   &__field {
     position: relative;

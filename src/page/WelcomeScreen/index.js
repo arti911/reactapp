@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Button, Empty, Row, Col } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
+import { Button, Empty, Row, Col, List } from "antd";
+import { PlusOutlined, CreditCardOutlined } from "@ant-design/icons";
 
 import AddCardModal from "../../components/AddCardModal";
 
@@ -21,9 +21,19 @@ const WelcomeScreen = (props) => {
           Добавить карту
         </Button>
         {props.cards.length ? (
-          props.cards.map((item) => {
-            return <p key={item.name}>{JSON.stringify(item)}</p>;
-          })
+          <List
+            dataSource={props.cards}
+            bordered
+            renderItem={(item) => (
+              <List.Item key={item.id}>
+                <List.Item.Meta
+                  avatar={<CreditCardOutlined />}
+                  title={item.nameCard}
+                  description={item.balanceCard}
+                />
+              </List.Item>
+            )}
+          />
         ) : (
           <Empty
             description={"Список карт пуст"}

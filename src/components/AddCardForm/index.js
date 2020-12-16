@@ -1,51 +1,102 @@
-import React, { useEffect } from "react";
-import { Button } from "antd";
-import { useForm } from "react-hook-form";
+import React, { useState, useEffect } from "react";
+import { Button, Form, Input, Select } from "antd";
 
 import "./AddCardForm.scss";
 
+const { Option } = Select;
+
+const CurrencySelection = (props) => {
+  const onChange = (value) => {
+    props.onChangeCurrency(value);
+  };
+
+  return (
+    <Select
+      defaultValue={props.currency}
+      className="select-before"
+      onChange={onChange}
+    >
+      <Option value="RUB">RUB</Option>
+      <Option value="USD">USD</Option>
+      <Option value="EUR">EUR</Option>
+    </Select>
+  );
+};
+
 const AddCardForm = (props) => {
-  const { register, handleSubmit, reset } = useForm();
+  const [form] = Form.useForm();
+  const [currency, setCurrency] = useState("RUB");
+
+  const onReset = () => {
+    form.resetFields();
+  };
 
   const onSubmit = (data) => {
-    console.log(data);
-    props.onAddCard(data);
+    const card = {
+      ...data,
+      id: Date.now(),
+      currency,
+    };
+
+    onReset();
+    props.onAddCard(card);
     props.onCloseModal(false);
   };
 
   useEffect(() => {
-    reset();
+    onReset();
   }, [props.triggerReset]);
 
   return (
-    <form className={"add-card-form"} onSubmit={handleSubmit(onSubmit)}>
-      <label className={"add-card-form__field"}>
-        <input
-          name={"nameCard"}
-          type={"text"}
-          ref={register}
-          autoComplete={"off"}
-          required
+    <Form
+      className={"add-card-form"}
+      form={form}
+      name={"addCard"}
+      onFinish={onSubmit}
+      layout={"vertical"}
+    >
+      <Form.Item
+        label={"Название карты"}
+        name={"nameCard"}
+        rules={[
+          {
+            required: true,
+            message: "Название не должно быть пустым.",
+          },
+        ]}
+      >
+        <Input placeholder={""} />
+      </Form.Item>
+      <Form.Item
+        label={"Баланс карты"}
+        name={"balanceCard"}
+        rules={[
+          {
+            required: true,
+            message: "Баланс не должен быть пустым.",
+          },
+        ]}
+      >
+        <Input
+          addonBefore={
+            <CurrencySelection
+              currency={currency}
+              onChangeCurrency={setCurrency}
+            />
+          }
+          placeholder={""}
         />
-        <span className={"add-card-form__placeholder"}>Название карты</span>
-      </label>
-      <label className={"add-card-form__field"}>
-        <input
-          name={"balanceCard"}
-          type={"text"}
-          ref={register}
-          autoComplete={"off"}
-          required
-        />
-        <span className={"add-card-form__placeholder"}>Баланс карты</span>
-      </label>
-      <label>
+      </Form.Item>
+      <Form.Item>
         <Button type={"primary"} htmlType={"submit"}>
           Добавить
         </Button>
-        <Button htmlType={"reset"}>Очистить</Button>
-      </label>
-    </form>
+        <Button htmlType={"reset"} onClick={onReset}>
+          Очистить
+        </Button>
+      </Form.Item>
+    </Form>
+    // </form>
   );
 };
 
