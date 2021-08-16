@@ -1,0 +1,26 @@
+$parent: aviasales;
+
+.#{$parent} {
+  display: flex;
+  gap: 20px;
+
+  @media (min-width: 1200px) {
+    padding: 0 103px;
+  }
+
+  &__filters {
+    width: 100%;
+
+    @media (min-width: 1200px) {
+      max-width: 232px;
+    }
+  }
+
+  &__content {
+    width: 100%;
+
+    @media (min-width: 1200px) {
+      max-width: 502px;
+    }
+  }
+}
