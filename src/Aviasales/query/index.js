@@ -9,8 +9,22 @@ export const getSearchId = async () => {
 };
 
 export const getTickets = async (searchId) => {
-  const data = await fetch(`${PATH_GET_TICKETS}?searchId=${searchId}`);
-  const response = await data.json();
+  let status = true;
 
-  return response;
+  while (status) {
+    try {
+      const data = await fetch(`${PATH_GET_TICKETS}?searchId=${searchId}`);
+  
+      if (data.status >= 200 && data.status <= 299) {
+        const response = await data.json();
+        return response;
+      } else {
+        status = false;
+        throw new Error("Что-то пошло не так");
+      }
+    } catch (error) {
+      status = true;
+      console.log("---data", error);
+    }
+  }
 };

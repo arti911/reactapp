@@ -25,7 +25,7 @@ const Aviasales = () => {
       );
   }, []);
 
-  useEffect(() => {
+  useEffect(() => {    
     if (searchId === null) {
       return;
     }
@@ -40,12 +40,6 @@ const Aviasales = () => {
             setLoading(false);
           }
         })
-        .catch(() => {
-          message.warning(
-            "Что-то пошло не так, мы не дослали все билеты которые нашли. Если хотите увидеть все билеты перезагрузите страницу"
-          );
-          setLoading(false);
-        });
     }
   }, [endSearchTickets, searchId, ticketsAll]);
 

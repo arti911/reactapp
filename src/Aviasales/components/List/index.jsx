@@ -1,16 +1,15 @@
-import { useState } from "react";
-
 import Card from "../Card";
 
 import "./style.scss";
 
+const LIMIT = 5;
+
 const List = (props) => {
-  const [offset, setOffset] = useState(5);
 
   return (
     <div className="aviasales-list-tickets">
-      {props.onFilteringTicketsHandler(props.tickets).splice(0, offset).map((ticket) => (
-        <Card {...ticket} key={ticket.price + 1} />
+      {props.onFilteringTicketsHandler(props.tickets).splice(0, LIMIT).map((ticket) => (
+        <Card {...ticket} key={`${ticket.price + Math.random()}-${ticket.carrier}`} />
       ))}
     </div>
   );
