@@ -1,12 +1,15 @@
 $parent: aviasales;
 
 .#{$parent} {
-  display: flex;
-  gap: 20px;
-
   @media (min-width: 1200px) {
-    padding: 0 103px;
+    padding: 50px 103px;
   }
+
+  &__wrapper {
+    display: flex;
+    gap: 20px;
+  }
+
 
   &__filters {
     width: 100%;

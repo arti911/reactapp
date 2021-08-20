@@ -32,7 +32,7 @@ const Filter = (props) => {
 
   return (
     <div className="filter">
-      <Title>Количество пересадок</Title>
+      <Title level={5}>Количество пересадок</Title>
       <Checkbox checked={checkAll} onChange={onCheckAllChange}>Все</Checkbox>
       <Group options={Object.values(stops)} value={checkedList} onChange={onChange} />
     </div>

@@ -20,3 +20,5 @@ export const STOPS = {
   2: "2 пересадки",
   3: "3 пересадки"
 };
+
+export const LIMIT = 5;
