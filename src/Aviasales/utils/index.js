@@ -1,8 +1,21 @@
+import { SORT } from "../constants";
+import { filterOfTransfers } from "./filtering";
+
 const sumDurationStops = (ticket) => ticket.reduce((acc, item) => acc + item.duration, 0);
 
-export const filteringTickets = (tickets) => tickets.sort((a, b) => a.price - b.price);
+export const filteringTickets = (tickets, parameter, stops) => {
+  let list = [];
 
-export const filteringFastTickets = (tickets) => tickets.sort((a, b) => sumDurationStops(a.segments) - sumDurationStops(b.segments));
+  if (parameter === SORT.CHEAP) {
+    list= tickets.sort((a, b) => a.price - b.price)
+  } else if (parameter === SORT.FAST) {
+    list = tickets.sort((a, b) => sumDurationStops(a.segments) - sumDurationStops(b.segments));
+  }
+
+  list= filterOfTransfers(list, stops);
+
+  return list;
+};
 
 export const range = (date, duration) => {
   const MINUTE = 60;
