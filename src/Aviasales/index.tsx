@@ -33,13 +33,6 @@ const Aviasales = () => {
   });
   const [stops, setStops] = useState<Array<string>>(Object.keys(STOPS));
 
-  const [defaultFilter, setDefaultFilter] = useState(SORT.CHEAP);
-  const [sortTickets, setSortTickets] = useState({
-    tickets: [],
-    viewTickets: []
-  });
-  const [stops, setStops] = useState(Object.keys(STOPS));
-
   useEffect(() => {
     getSearchId()
       .then((response) => setSearchId(response.searchId))
@@ -71,7 +64,6 @@ const Aviasales = () => {
           setFirstPackTickets(false);
         });
     }
-
   }, [endSearchTickets, searchId, ticketsAll]);
 
   useEffect(() => {
