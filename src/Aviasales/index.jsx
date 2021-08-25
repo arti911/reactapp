@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { message, Spin, Tabs, Empty, Button, Typography, Space } from "antd";
+import { message, Spin, Tabs, Empty, Typography, Space } from "antd";
 
 import Filter from "./components/Filter";
 import List from "./components/List";
+import HeaderMain from "./components/Header";
+import ButtonMain from "./components/Button";
 
 import { getSearchId, getTickets } from "./query";
 import { filteringTickets } from "./utils";
 
 import "./style.scss";
 
-import { SORT, TABS, STOPS, LIMIT } from "./constants";
-
+import { SORT, TABS, STOPS, LIMIT, FILTERS } from "./constants";
 
 const { Text } = Typography;
 const { TabPane } = Tabs;
@@ -19,6 +20,7 @@ const Aviasales = () => {
   const [searchId, setSearchId] = useState(null);
   const [ticketsAll, setTicketsAll] = useState([]);
   const [endSearchTickets, setEndSearchTickets] = useState(false);
+  const [firstPackTickets, setFirstPackTickets] = useState(true);
 
   const [defaultFilter, setDefaultFilter] = useState(SORT.CHEAP);
   const [sortTickets, setSortTickets] = useState({
@@ -45,9 +47,19 @@ const Aviasales = () => {
         .then((response) => {
           setEndSearchTickets(response.stop);
           setTicketsAll([...ticketsAll, ...response.tickets]);
+        
+          if (firstPackTickets) {
+            const list = filteringTickets(ticketsAll, defaultFilter, stops);
+
+            setSortTickets({
+              tickets: list,
+              viewTickets: list.slice().splice(0, LIMIT)
+            });
+          }
+
+          setFirstPackTickets(false);
         });
     }
-
   }, [endSearchTickets, searchId, ticketsAll]);
 
   useEffect(() => {
@@ -80,12 +92,10 @@ const Aviasales = () => {
 
   return (
     <section className="aviasales">
-      <header className="aviasales__header">
-        Aviasales
-      </header>
+      <HeaderMain />
       <div className="aviasales__wrapper">
         <aside className="aviasales__filters">
-          <Filter setStopsHandler={setStops} />
+          { FILTERS.map((item) => <Filter title={item.title} items={item.items} clickFilterHandler={setStops} />) }
         </aside>
         <div className="aviasales__content">  
           <Tabs defaultActiveKey={defaultFilter} onChange={onChangeTabs}>
@@ -101,9 +111,10 @@ const Aviasales = () => {
                 { sortTickets.tickets.length > 0 && (
                   <>
                     <List tickets={sortTickets.viewTickets} />
-                    <Button type="primary" size="large" onClick={onLoadTickets}>{`Показать ещё ${LIMIT} билетов`}</Button>
+                    <ButtonMain type="primary" size="large" onClickHandler={onLoadTickets} label={`Показать ещё ${LIMIT} билетов`} />
                   </>
-                  ) }
+                  )
+                }
               </TabPane>
             ))}
           </Tabs>

@@ -35,7 +35,7 @@ export const formatTime = (duration) => {
   const ONE_HOUR = 60;
 
   let days = 0;
-  let hours = Math.ceil(duration / ONE_HOUR);
+  let hours = Math.floor(duration / ONE_HOUR);
   let minutes = duration % ONE_HOUR;
 
   if (hours > ONE_DAY) {

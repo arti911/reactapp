@@ -3,38 +3,33 @@ import { useCallback } from "react";
 import { useState } from "react";
 import { searchStops } from "../../utils/filtering";
 
-import { STOPS } from "../../constants";
-
 import "./style.scss";
 
 const { Title } = Typography;
 const { Group } = Checkbox;
 
 const Filter = (props) => {
-  const stops = Object.values(STOPS);
-
   const [checkAll, setCheckAll] = useState(true);
-  const [checkedList, setCheckedList] = useState(checkAll ? stops : []);
-
+  const [checkedList, setCheckedList] = useState(checkAll ? props.items : []);
 
   const onChange = useCallback((list) => {
     setCheckedList(list);
-    setCheckAll(list.length === stops.length);
+    setCheckAll(list.length === props.items.length);
 
-    props.setStopsHandler(searchStops(list));
+    props.clickFilterHandler(searchStops(list));
   }, []);
 
   const onCheckAllChange = useCallback((event) => {
-    setCheckedList(event.target.checked ? stops : []);
+    setCheckedList(event.target.checked ? props.items : []);
     setCheckAll(event.target.checked);
-    props.setStopsHandler(event.target.checked ? stops : []);
+    props.clickFilterHandler(event.target.checked ? props.items : []);
   }, []);
 
   return (
     <div className="filter">
-      <Title level={5}>Количество пересадок</Title>
+      <Title level={5}>{ props.title }</Title>
       <Checkbox checked={checkAll} onChange={onCheckAllChange}>Все</Checkbox>
-      <Group options={Object.values(stops)} value={checkedList} onChange={onChange} />
+      <Group options={props.items} value={checkedList} onChange={onChange} />
     </div>
   );
 };

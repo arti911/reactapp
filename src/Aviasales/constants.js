@@ -22,3 +22,10 @@ export const STOPS = {
 };
 
 export const LIMIT = 5;
+
+export const FILTERS = [
+  {
+    title: "Количество пересадок",
+    items: Object.values(STOPS),
+  }
+]
