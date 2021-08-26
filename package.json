@@ -16,7 +16,7 @@
     "react-scripts": "4.0.3",
     "swiper": "^6.8.1"
   },
-  "homepage": "https://arti911.github.io/home",
+  "homepage": "https://arti911.github.io/reactapp",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
