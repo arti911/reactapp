@@ -1,6 +1,6 @@
 {
   "name": "reactapp",
-  "version": "0.1.0",
+  "version": "1.22.5",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
@@ -16,16 +16,14 @@
     "react-scripts": "4.0.3",
     "swiper": "^6.8.1"
   },
-  "homepage": "https://arti911.github.io/reactapp",
+  "homepage": "https://arti911.github.io/home",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,15 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import SliderImage from "../SliderImage";
+import { Typography } from "antd";
 
-const Main = () => {
-  return (
-    <>
-      <Link to="/price">Валюты</Link>
-      <Link to="/balance">Где деньги</Link>
-      <SliderImage />
-    </>
-  );
-};
+const { Title } = Typography;
+
+const Main = () => <Title>Hello World!</Title>;
 
 export default Main;
