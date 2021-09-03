@@ -9,3 +9,7 @@
 #root {
   height: inherit;
 }
+
+.ant-layout {
+  min-height: -webkit-fill-available;
+}
