@@ -1,8 +1,10 @@
 import ReactDOM from 'react-dom';
 import { HashRouter } from "react-router-dom";
+import { Layout } from "antd";
+
 import "antd/dist/antd.css";
 
-import './index.css';
+import './index.scss';
 
 import App from './App';
 
@@ -10,7 +12,9 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <HashRouter>
-    <App />
+    <Layout>
+      <App />
+    </Layout>
   </HashRouter>,
   document.getElementById('root')
 );
