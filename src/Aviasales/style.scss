@@ -1,29 +1,19 @@
 $parent: aviasales;
 
 .#{$parent} {
+  padding: 0 15px 70px;
+  background-color: #f3f7fa;
+
   @media (min-width: 1200px) {
     padding: 50px 103px;
   }
 
   &__wrapper {
-    display: flex;
+    display: grid;
     gap: 20px;
-  }
 
-
-  &__filters {
-    width: 100%;
-
-    @media (min-width: 1200px) {
-      max-width: 232px;
-    }
-  }
-
-  &__content {
-    width: 100%;
-
-    @media (min-width: 1200px) {
-      max-width: 502px;
+    @media (min-width: 768px) {
+      grid-template-columns: 232px minmax(320px, 502px);
     }
   }
 }
