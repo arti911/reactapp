@@ -9,7 +9,6 @@ const Main = () => (
   <section className="main">
     <Title>Hello World!</Title>
     <Link to="/aviasales">Поикс дешёвых авиабилетов</Link>
-    <Link to="/english">Английский</Link>
   </section>
 );
 
