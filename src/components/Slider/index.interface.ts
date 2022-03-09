@@ -1,7 +1,6 @@
-import SwiperCore from "swiper";
+import { SwiperOptions } from "swiper";
 
 export interface ISlider {
-  settings: SwiperCore;
-  loop: boolean;
-  children: JSX.Element | JSX.Element[];
+  settings: SwiperOptions;
+  children: JSX.Element | JSX.Element[] | any;
 }
