@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React from "react";
 
 import Information from "./Information";
 
@@ -6,7 +6,7 @@ import ICard from "./index.interface";
 
 import "./style.scss";
 
-const Card: FC<ICard> = (props) => (
+const Card = (props: ICard) => (
   <div className="card">
     <header className="card__header">
       <div className="card__price">{props.price} Р</div>

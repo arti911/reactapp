@@ -1,8 +1,8 @@
-import { FC } from "react";
+import React from "react";
 
 import { IPrice } from "./index.interface";
 
-const Price: FC<IPrice> = (props) => {
+const Price = (props: IPrice) => {
   return <h1>{ props.price }</h1>;
 };
 

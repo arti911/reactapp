@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React from "react";
 
 import { formatTime, range, stopsCount } from "../../../utils";
 
@@ -6,7 +6,7 @@ import { IInformation } from "./index.interface";
 
 import "./style.scss";
 
-const Information: FC<IInformation>  = (props) => (
+const Information = (props: IInformation) => (
   <div className="information">
     <div className="information__route">
       <div className="information__title">

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { RadioChangeEvent } from "antd";
 
 import Tariffs from "./components/Tariffs";
