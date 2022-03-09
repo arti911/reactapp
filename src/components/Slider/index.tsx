@@ -1,67 +1,37 @@
-import React, { cloneElement, useRef, useState } from "react";
+import React, { cloneElement, ReactElement } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Pagination, } from "swiper";
+import { Navigation, Pagination } from "swiper";
 
 import 'swiper/css/bundle';
 
 import "./style.scss";
 
-SwiperCore.use([Navigation, Pagination]);
+import { ISlider } from "./index.interface";
 
-const Slider = (props: any) => {
-  const [navigation, setNavigation] = useState<any>(false);
-  const [pagination, setPagination] = useState<any>(false);
+const Slider = (props: ISlider) => {
 
-  const prevRef = useRef<any>(null);
-  const nextRef = useRef<any>(null);
+  const lock = (swiper: any) => swiper.disable();
 
-  const lock = (swiper: SwiperCore) => {
-    swiper.disable();
-
-    setPagination(false);
-    setNavigation(false);
-  }
-
-  const unlock = (swiper: SwiperCore) => {
+  const unlock = (swiper: any) => {
     swiper.enable();
     swiper.update();
-
-    setPagination({
-      dynamicBullets: true,
-      clickable: true,
-    });
-
-    setNavigation({
-      nextEl: nextRef.current,
-      prevEl: prevRef.current,
-    });
   }
-
-  const update = (swiper: SwiperCore) => {
+  
+  const update = (swiper: any) => {
     swiper.slideToLoop(0, 0);
+    swiper.navigation.update();
   }
 
   return (
     <div className="swiper-slider">
-      { props.settings.loop && (
-        <>
-          <button className="swiper-slider-button-prev" ref={prevRef}>
-            Prev
-          </button>
-          <button className="swiper-slider-button-next" ref={nextRef}>
-            Next
-          </button>
-        </>
-      )}
       <Swiper
         {...props.settings}
-        navigation={navigation}
-        pagination={pagination}
+        modules={[Navigation, Pagination]}
         onUnlock={unlock}
         onLock={lock}
         onUpdate={update}
       >
-        { props.children.map((item: any, index: any) => (
+        { props.children.map((item: ReactElement, index: number) => (
           <SwiperSlide key={index + 1}>
             {cloneElement(item, { ...item.props })}
           </SwiperSlide>

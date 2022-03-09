@@ -16,7 +16,7 @@ export const searchStops = (countStops: Array<string>): Array<string> => {
   return listStops;
 };
 
-export const filterOfTransfers = (tickets: Array<ICard>, stops: Array<string>): Array<ICard> => {
+export const filterOfTransfers = (tickets: ICard[], stops: string[]): ICard[] => {
   if (stops.length === 0) {
     return [];
   } else if (stops.length === STOPS.length) {
@@ -25,7 +25,7 @@ export const filterOfTransfers = (tickets: Array<ICard>, stops: Array<string>): 
     return tickets.filter((item) => {
       const [ from, to ] = item.segments;
   
-      return stops.includes(`${from.stops.length}`) || stops.includes(`${to.stops.length}`)
+      return stops.includes(`${from?.stops.length}`) || stops.includes(`${to?.stops.length}`)
     });
   }
 };
