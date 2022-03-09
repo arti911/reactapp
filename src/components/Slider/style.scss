@@ -1,0 +1,7 @@
+$parent: "swiper";
+
+.#{$parent} {
+  & .swiper-slide {
+    height: auto !important;
+  }
+}
