@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { message, Spin, Tabs, Empty, Typography, Space, PageHeader } from "antd";
 import { get } from "lodash";
 
@@ -22,7 +22,7 @@ const { TabPane } = Tabs;
 
 const Aviasales = () => {
   const [searchId, setSearchId] = useState<string>("");
-  const [ticketsAll, setTicketsAll] = useState<Array<ICard>>([]);
+  const [ticketsAll, setTicketsAll] = useState<ICard[]>([]);
   const [endSearchTickets, setEndSearchTickets] = useState<boolean>(false);
   const [firstPackTickets, setFirstPackTickets] = useState<boolean>(true);
 

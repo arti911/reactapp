@@ -1,9 +1,9 @@
-import { FC } from "react";
+import React from "react";
 import { Radio } from "antd";
 
 import { IRaioGroup } from "./index.interface";
 
-const Tariffs: FC<IRaioGroup> = (props) => {
+const Tariffs = (props: IRaioGroup) => {
   return (
     <Radio.Group
       options={props.list}
