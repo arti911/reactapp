@@ -4,6 +4,7 @@ import { Layout } from "antd";
 import MainPage from "./components/Main";
 import Aviasales from "./Aviasales";
 import English from "./English";
+import Calculator from "./Calculator";
 
 const { Content } = Layout;
 
@@ -13,6 +14,7 @@ const App = () => (
       <Route path="/" component={MainPage} exact />
       <Route path="/aviasales" component={Aviasales} exact />
       <Route path="/english" component={English} exact />
+      <Route path="/calculator" component={Calculator} exact />
     </Content>
   </Router>
 );

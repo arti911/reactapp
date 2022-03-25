@@ -1,5 +1,5 @@
 import { Typography, Checkbox } from "antd";
-import { FC, useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 
 import { searchStops } from "../../utils/filtering";
 
@@ -10,7 +10,7 @@ import "./style.scss";
 const { Title } = Typography;
 const { Group } = Checkbox;
 
-const Filter: FC<IFilter> = (props) => {
+const Filter = (props: IFilter) => {
   const [checkAll, setCheckAll] = useState<boolean>(true);
   const [checkedList, setCheckedList] = useState<Array<string>>(checkAll ? props.items : []);
 

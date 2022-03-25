@@ -3,9 +3,9 @@ export interface IInformation {
   destination: string;
   date: string;
   duration: number;
-  stops: Array<string>;
+  stops: string[];
 }
 
 export interface ISegments {
-  segments: Array<IInformation>;
+  segments: IInformation[];
 }
