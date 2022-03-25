@@ -24,6 +24,33 @@ export const data: IDataItem[] = [
     ],
   },
   {
+    title: "Past Simple",
+    proposalSchemes: [
+      {
+        title: "Схема предложения",
+        rule: "Существительное или местоимение / глаголо с окончанием -ed | вторая форма неправильного глагола / всё остальное",
+        examples: [
+          "I played with my dog"
+        ]
+      },
+      {
+        title: "Схема вопроса",
+        rule: "Вопросительное слово (если есть) / did / Существительное или местоимение / глагол / всё остальное",
+        examples: [
+          "Did you travel to Europe last summer?",
+          "When did she find new friends?"
+        ]
+      },
+      {
+        title: "Схема отрицательного предложения",
+        rule: "Существительное или местоимение / did / not / глагол без to / всё остальное",
+        examples: [
+          "I didn't like onion when I was a child"
+        ]
+      },
+    ]
+  },
+  {
     title: "Present Continuos",
     proposalSchemes: [
       {
@@ -53,6 +80,69 @@ export const data: IDataItem[] = [
         ],
       },
     ],
+  },
+  {
+    title: "Past Continuous",
+    proposalSchemes: [
+      {
+        title: "Схема предложения",
+        rule:
+          "Существительное или местоимение / was/were (I/He/She/It - You/We/They) / глагол с окончанием на -ing / все остальное",
+        examples: [
+          "I was reading a book",
+        ]
+      },
+      {
+        title: "Схема вопроса",
+        rule:
+          "Вопросительное слово (если есть) / was/were / Существительное или местоимение / глагол с окончанием на -ing / все остальное",
+        examples: [
+          "Was Adam listening to the music when he came?",
+          "Were they discussing the plans?",
+          "What was Adam doing when she came?",
+        ],
+      },
+      {
+        title: "Схема отрицательного предложения",
+        rule:
+          "Существительное или местоимение / was/were / not / глагол с окончанием на -ing / все остальное",
+        examples: [
+          "This time last year I was not living in Russia",
+          "He was not eating dinner when the phone rang",
+          "We were working hard while they were not doing anything",
+        ],
+      }
+    ]
+  },
+  {
+    title: "Future Continuous",
+    proposalSchemes: [
+      {
+        title: "Схема предложения",
+        rule: "Существительное или местоимение / will / be / глагол с окончанием на -ing / все остальное",
+        examples: [
+          "I will be waiting for you at 7 o'clock tomorrow"
+        ]
+      },
+      {
+        title: "Схема вопроса",
+        rule:
+          "Вопросительное слово (если есть) / will / Существительное или местоимение / be / глагол с окончанием на -ing / все остальное",
+        examples: [
+          "Will you be working late at the office tonight?",
+          "Will she be leaving next Friday?",
+          "Will the storm be coming soon?",
+        ]
+      },
+      {
+        title: "Схема отрицательного предложения",
+        rule:
+          "Существительное или местоимение / will / not / be / глагол с окончанием на -ing / все остальное",
+        examples: [
+          "I will not be travelling next winter."
+        ]
+      },
+    ]
   },
   {
     title: "Future Simple",
