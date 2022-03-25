@@ -1,3 +1,4 @@
+import React from "react";
 import { Tabs, Layout } from "antd";
 
 import PresentSimple from "./components/PresentSimple";

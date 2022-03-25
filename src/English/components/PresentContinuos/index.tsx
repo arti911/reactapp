@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { Typography, Divider, Card, Row, Col } from "antd";
 
 import { ISchema } from "../../index.interface";
