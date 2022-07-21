@@ -1,0 +1,161 @@
+.stories-container-cube {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    background: #000;
+
+    & .swiper {
+        width: 100%;
+        height: 100%;
+    }
+
+    & .swiper-slide {
+        height: initial;
+    }
+
+    &.stories-slider-perspective {
+        & .stories {
+            transform: translateZ(calc(-1 * var(--swiper-cube-translate-z)));
+            transform-origin: 0% 0% calc(-1 * var(--swiper-cube-translate-z));
+            transition: transform, 0.05s linear;
+        }
+    }
+}
+
+.stories {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 2;
+}
+
+.stories-close {
+    position: absolute;
+    top: 28px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    background-color: rgba(#fff, .2);
+    cursor: pointer;
+    z-index: 4;
+}
+
+.stories-content {
+    position: relative;
+    height: inherit;
+
+    & > * {
+        height: inherit;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    & &__loaded {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #575654;
+        transform: rotate(0deg);
+    }
+    
+    & &__loaded-spiner {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-left-color: #EBEBEB;
+        animation-name: spiner;
+        animation-duration: 1s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-fill-mode: backwards;
+    }
+}
+
+.stories-progress {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    gap: 16px;
+    padding: 8px 20px;
+    transition: opacity .2s;
+    z-index: 1;
+
+    & &__item {
+        position: relative;
+        height: 4px;
+        background-color: rgba(#fff, .3);
+        border-radius: 5px;
+        overflow: hidden;
+
+        &--done {
+            .stories-progress__item-progress {
+                width: 100%;
+            }
+        }
+
+        &--active {
+            .stories-progress__item-progress {
+                animation-name: active-slide;
+                animation-duration: 1200ms;
+                animation-timing-function: linear;
+                animation-fill-mode: forwards;
+            }
+        }
+    }
+
+    & &__item-progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: inherit;
+        background-color: white;
+    }
+}
+
+.stories-navigation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    height: inherit;
+    z-index: 3;
+}
+
+.stories-preview {
+    display: block;
+
+    @media (min-width: 576px) {
+        display: none;
+    }
+}
+
+@keyframes active-slide {
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes spiner {
+    to {
+        transform: rotate(360deg);
+    }
+}
