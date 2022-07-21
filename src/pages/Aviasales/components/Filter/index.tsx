@@ -14,14 +14,14 @@ const Filter = (props: IFilter) => {
   const [checkAll, setCheckAll] = useState<boolean>(true);
   const [checkedList, setCheckedList] = useState<Array<string>>(checkAll ? props.items : []);
 
-  const onChange = useCallback((list) => {
+  const onChange = useCallback((list: any) => {
     setCheckedList(list);
     setCheckAll(list.length === props.items.length);
 
     props.clickFilterHandler(searchStops(list));
   }, []);
 
-  const onCheckAllChange = useCallback((event) => {
+  const onCheckAllChange = useCallback((event: any) => {
     setCheckedList(event.target.checked ? props.items : []);
     setCheckAll(event.target.checked);
     props.clickFilterHandler(event.target.checked ? props.items : []);

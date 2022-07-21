@@ -1,21 +1,26 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import { Layout } from "antd";
 
-import MainPage from "./components/Main";
-import Aviasales from "./Aviasales";
-import English from "./English";
+import MainPage from "./pages/Main";
+import Aviasales from "./pages/Aviasales";
+import Calculator from "./pages/Calculator";
 
-const { Content } = Layout;
+const { Content, Header } = Layout;
 
 const App = () => (
-  <Content>
-    <Routes>
-      <Route path="/" element={<MainPage />} />
-      <Route path="/aviasales" element={<Aviasales />} />
-      <Route path="/english" element={<English />} />
-    </Routes>
-  </Content>
+  <HashRouter>
+    <Header>
+      <Link to="/">Главная</Link>
+    </Header>
+    <Content>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="aviasales" element={<Aviasales />} />
+        <Route path="calculator" element={<Calculator />} />
+      </Routes>
+    </Content>
+  </HashRouter>
 );
 
 export default App;
