@@ -7,9 +7,9 @@ import "./style.scss";
 const { Title } = Typography;
 
 const Main = () => (
-  <section className="main">
+  <section className="main page-container">
     <Title>Hello World!</Title>
-    <Link to="/aviasales">Поикс дешёвых авиабилетов</Link>
+    <Link to="/aviasales">Поиск дешёвых авиабилетов</Link>
   </section>
 );
 

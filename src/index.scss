@@ -13,3 +13,11 @@
 .ant-layout {
   min-height: -webkit-fill-available;
 }
+
+.page-container {
+  padding: 16px;
+
+  & > a {
+    display: block;
+  }
+}
