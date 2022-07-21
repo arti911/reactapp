@@ -5,6 +5,7 @@ import { Layout } from "antd";
 import MainPage from "./pages/Main";
 import Aviasales from "./pages/Aviasales";
 import Calculator from "./pages/Calculator";
+import English from "./pages/English";
 
 const { Content, Header } = Layout;
 
@@ -18,6 +19,7 @@ const App = () => (
         <Route path="/" element={<MainPage />} />
         <Route path="aviasales" element={<Aviasales />} />
         <Route path="calculator" element={<Calculator />} />
+        <Route path="english" element={<English />} />
       </Routes>
     </Content>
   </HashRouter>
