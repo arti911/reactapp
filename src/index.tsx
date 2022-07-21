@@ -1,5 +1,5 @@
-import ReactDOM from 'react-dom';
-import { HashRouter } from "react-router-dom";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import { Layout } from "antd";
 
 import "antd/dist/antd.css";
@@ -10,14 +10,17 @@ import App from './App';
 
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
-  <HashRouter>
+const rootElem = document.getElementById('root');
+
+if (rootElem !== null) {
+  const root = ReactDOM.createRoot(rootElem);
+
+  root.render(
     <Layout>
       <App />
     </Layout>
-  </HashRouter>,
-  document.getElementById('root')
-);
+  );
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
