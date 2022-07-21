@@ -1,20 +1,26 @@
-import { HashRouter as Router, Route } from "react-router-dom";
+import React from "react";
+import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import { Layout } from "antd";
 
 import MainPage from "./components/Main";
 import Aviasales from "./Aviasales";
 import Calculator from "./Calculator";
 
-const { Content } = Layout;
+const { Content, Header } = Layout;
 
 const App = () => (
-  <Router>
+  <HashRouter>
+    <Header>
+      <Link to="/">Главная</Link>
+    </Header>
     <Content>
-      <Route path="/" component={MainPage} exact />
-      <Route path="/aviasales" component={Aviasales} exact />
-      <Route path="/calculator" component={Calculator} exact />
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="aviasales" element={<Aviasales />} />
+        <Route path="calculator" element={<Calculator />} />
+      </Routes>
     </Content>
-  </Router>
+  </HashRouter>
 );
 
 export default App;
