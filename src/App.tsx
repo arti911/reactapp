@@ -2,9 +2,9 @@ import React from "react";
 import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import { Layout } from "antd";
 
-import MainPage from "./components/Main";
-import Aviasales from "./Aviasales";
-import Calculator from "./Calculator";
+import MainPage from "./pages/Main";
+import Aviasales from "./pages/Aviasales";
+import Calculator from "./pages/Calculator";
 
 const { Content, Header } = Layout;
 

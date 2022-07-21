@@ -10,6 +10,7 @@ const Main = () => (
   <section className="main page-container">
     <Title>Hello World!</Title>
     <Link to="/aviasales">Поиск дешёвых авиабилетов</Link>
+    <Link to="/calculator">Калькулятор</Link>
   </section>
 );
 
