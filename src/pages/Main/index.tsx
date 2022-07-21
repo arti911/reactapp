@@ -11,6 +11,7 @@ const Main = () => (
     <Title>Hello World!</Title>
     <Link to="/aviasales">Поиск дешёвых авиабилетов</Link>
     <Link to="/calculator">Калькулятор</Link>
+    <Link to="/english">Английский</Link>
   </section>
 );
 
