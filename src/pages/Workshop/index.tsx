@@ -1,3 +1,4 @@
+import React from "react";
 import StoriesContainer from "../../components/StoriesContainer";
 
 const Workshop = () => {

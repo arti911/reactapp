@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { get } from "lodash";
 import { useSwiper } from "swiper/react";
 
 import { IStories } from "./IStories";
@@ -47,27 +46,30 @@ const useStories = (props: IStories) => {
   };
 
   useEffect(() => {
+    if (props.stories[currentCount] !== undefined && props.stories[currentCount].type === TYPE_STORIES.BLOCK) {
+      setLoaded(false);
+    }
+
     if (props.isActive) {
+      if (!loaded) {
+        if (!paused) {
+          timerId.current = setInterval(
+            () => {
+              setCurrentCount((value) => value + 1);
+              setLoaded(true);
+              setInter(props.defaultInterval);
+            },
+            interval
+          );
+        }
+      }
+    } else {
       setCurrentCount(0);
+      setLoaded(false);
       setInter(props.defaultInterval);
     }
-  }, [ props.isActive ])
 
-  useEffect(() => {
-    if (!loaded) {
-      if (!paused) {
-        timerId.current = setInterval(
-          () => {
-            setCurrentCount((value) => value + 1);
-            setLoaded(true);
-            setInter(props.defaultInterval);
-          },
-          interval
-        );
-
-        return () => clearInterval(timerId.current);
-      }
-    }
+    return () => clearInterval(timerId.current);
   }, [currentCount, loaded, paused, props.isActive]);
 
   useEffect(() => {
@@ -78,14 +80,7 @@ const useStories = (props: IStories) => {
         swiper.slideNext(500);
       }
     }
-  }, [ currentCount, props.stories ])
-
-  useEffect(() => {
-    if (props.stories[currentCount] !== undefined && props.stories[currentCount].type === TYPE_STORIES.BLOCK && loaded) {
-      setLoaded(false);
-    }
-  }, [ currentCount ])
-
+  }, [ currentCount, props.stories, props.isActive ]);
   return {
     currentCount,
     paused,

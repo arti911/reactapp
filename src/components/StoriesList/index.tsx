@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCube } from "swiper";
 
@@ -38,7 +38,6 @@ const StoriesList = (props: any) => {
               countStories={props.list.length - 1}
               stories={item.list}
               defaultInterval={2000}
-              activeStory={props.initialSlide}
               isActive={index === props.initialSlide}
               onStoryEnd={props.setActiveStory}
             />
@@ -50,4 +49,4 @@ const StoriesList = (props: any) => {
   );
 };
 
-export default StoriesList;
+export default memo(StoriesList);

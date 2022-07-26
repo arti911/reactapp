@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { memo, useRef } from "react";
 
 import { IStories } from "../../hooks/IStories";
 
@@ -118,4 +118,4 @@ const Stories = (props: IStories) => {
   );
 };
 
-export default Stories;
+export default memo(Stories);

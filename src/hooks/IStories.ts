@@ -4,6 +4,5 @@ export interface IStories {
     countStories: number;
     defaultInterval: number; 
     stories: any[];
-    activeStory?: number;
     onStoryEnd: (index: number, isWatchStories?: boolean) => void;
 }

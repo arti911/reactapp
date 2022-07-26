@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, memo, useState } from "react";
 import { Button } from "antd";
 import { woman, cars } from "../../data/constants";
 import StoriesList from "../StoriesList";
@@ -71,4 +71,4 @@ const StoriesContainer = () => {
   );
 };
 
-export default StoriesContainer;
+export default memo(StoriesContainer);
