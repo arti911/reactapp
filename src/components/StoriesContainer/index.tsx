@@ -1,7 +1,8 @@
-import React, { Fragment, memo, useState } from "react";
+import React, { memo, useCallback, useMemo, useState } from "react";
 import { Button } from "antd";
 import { woman, cars } from "../../data/constants";
 import StoriesList from "../StoriesList";
+import { IListItem } from "../StoriesList/index.interface";
 
 const storiesContent = [
   {
@@ -42,28 +43,30 @@ const StoriesContainer = () => {
   const [watchStories, setWatchStories] = useState(false);
   const [initialSlide, setInitialSlide] = useState(0);
 
-  const showStories = (index: number, isWatch: boolean = false) => {
+  const initSlide = useMemo(() => initialSlide, [ initialSlide ]);
+
+
+  const showStories = useCallback((index: number, isWatch: boolean = false) => {
     setWatchStories(isWatch);
     setInitialSlide(index);
-  };
+  }, []);
 
   return (
     <>
-      {storiesSlider.map((item: any, index: number) => (
-        <Fragment key={item.key}>
-          <Button
-            type="primary"
-            onClick={() => showStories(index, true)}
-            className="stories-preview"
-          >
-            {`${item.preview} ${item.key}`}
-          </Button>
-        </Fragment>
+      {storiesSlider.map((item: IListItem, index: number) => (
+        <Button
+          key={item.key}
+          type="primary"
+          onClick={() => showStories(index, true)}
+          className="stories-preview"
+        >
+          {`${item.preview} ${item.key}`}
+        </Button>
       ))}
       {watchStories && (
         <StoriesList
           list={storiesSlider}
-          initialSlide={initialSlide}
+          initialSlide={initSlide}
           setActiveStory={showStories}
         />
       )}

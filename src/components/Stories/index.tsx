@@ -1,8 +1,9 @@
-import React, { memo, useRef } from "react";
+import React, { memo, MouseEvent, TouchEvent, useRef } from "react";
 
 import { IStories } from "../../hooks/IStories";
 
 import useStories from "../../hooks/useStories";
+import { IItemList } from "../StoriesList/index.interface";
 
 import "./style.scss";
 
@@ -26,24 +27,24 @@ const Stories = (props: IStories) => {
     setPaused
   } = useStories(props);
 
-  const press = useRef<any>();
+  const press = useRef<NodeJS.Timeout>();
 
   const getStoryContent = () => {
-    const InnerContent = props.stories[currentCount].link;
-
+    const InnerContent = props.stories[currentCount]!.link;
+  
     return <InnerContent />;
   };
 
-  const debouncePaused = (event: any) => {
+  const debouncePaused = (event: MouseEvent<HTMLDivElement> | TouchEvent<HTMLDivElement>) => {
     event.preventDefault();
 
     press.current = setTimeout(() => {
-      setInter((value: any) => value - (Date.now() - start));
+      setInter((value) => value - (Date.now() - start));
       setPaused(!paused);
     }, 200);
   };
   
-  const mouseUp = (type: string) => (event: any) => {
+  const mouseUp = (type: string) => (event: MouseEvent<HTMLDivElement> | TouchEvent<HTMLDivElement>) => {
     event.preventDefault();
     press.current && clearTimeout(press.current);
 
@@ -58,7 +59,7 @@ const Stories = (props: IStories) => {
     <div className="stories">
       <div className="stories-close" onClick={onClose}></div>
       <div className="stories-progress" style={{ opacity: paused ? 0 : 1 }}>
-        {props.stories.map((_: any, index: number) => (
+        {props.stories.map((_: IItemList, index: number) => (
           <div
             key={_.id}
             className={`stories-progress__item ${
@@ -89,9 +90,9 @@ const Stories = (props: IStories) => {
         )}
 
         {currentCount <= props.stories.length - 1 && (
-          (props.stories[currentCount].type === TYPE_STORIES.IMAGE && <img src={props.stories[currentCount].link} onLoad={onLoad} alt="car" />)
+          (props.stories[currentCount]!.type === TYPE_STORIES.IMAGE && <img src={props.stories[currentCount]!.link as string} onLoad={onLoad} alt="car" />)
           || 
-          (props.stories[currentCount].type === TYPE_STORIES.BLOCK && getStoryContent())
+          (props.stories[currentCount]!.type === TYPE_STORIES.BLOCK && getStoryContent())
           )
         }
       </div>

@@ -13,7 +13,7 @@ const useStories = (props: IStories) => {
 
   const swiper = useSwiper();
 
-  const timerId = useRef<any>();
+  const timerId = useRef<NodeJS.Timer>();
 
   const onClose = () => props.onStoryEnd(0);
 
@@ -46,7 +46,7 @@ const useStories = (props: IStories) => {
   };
 
   useEffect(() => {
-    if (props.stories[currentCount] !== undefined && props.stories[currentCount].type === TYPE_STORIES.BLOCK) {
+    if (props.stories[currentCount] !== undefined && props.stories[currentCount]!.type === TYPE_STORIES.BLOCK) {
       setLoaded(false);
     }
 

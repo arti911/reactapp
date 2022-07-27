@@ -6,22 +6,24 @@ import "swiper/css";
 import "swiper/css/effect-cube";
 
 import Stories from "../Stories";
+import { IListItem, IStoriesList } from "./index.interface";
 
-const StoriesList = (props: any) => {
-  const [ classStyle, setClassStyle ] = useState(true);
-
-  const onActiveStory = (swiper: any) => {
-    props.setActiveStory(swiper.activeIndex, true);
-  }
+const StoriesList = (props: IStoriesList) => {
+  const [classStyle, setClassStyle] = useState(true);
+  const [currentIndexActiveSlide, setCurrentIndexActiveSlide] = useState(props.initialSlide);
 
   return (
-    <div className={`stories-container-cube ${classStyle ? "stories-slider-perspective" : ""}`}>
+    <div
+      className={`stories-container-cube ${
+        classStyle ? "stories-slider-perspective" : ""
+      }`}
+    >
       <Swiper
         effect={"cube"}
         cubeEffect={{
-            shadow: false,
-            shadowOffset: 0,
-            slideShadows: false,
+          shadow: false,
+          shadowOffset: 0,
+          slideShadows: false,
         }}
         onTransitionStart={() => setClassStyle(false)}
         onSliderFirstMove={() => setClassStyle(false)}
@@ -29,21 +31,22 @@ const StoriesList = (props: any) => {
         modules={[EffectCube]}
         initialSlide={props.initialSlide}
         touchStartPreventDefault={false}
-        onActiveIndexChange={onActiveStory}
+        onActiveIndexChange={(swiper: any) =>
+          setCurrentIndexActiveSlide(swiper.activeIndex)
+        }
       >
-        {props.list.map((item: any, index: number) => (
+        {props.list.map((item: IListItem, index: number) => (
           <SwiperSlide key={item.key}>
             <Stories
               index={index}
               countStories={props.list.length - 1}
               stories={item.list}
               defaultInterval={2000}
-              isActive={index === props.initialSlide}
+              isActive={index === currentIndexActiveSlide}
               onStoryEnd={props.setActiveStory}
             />
           </SwiperSlide>
-          ))
-        }
+        ))}
       </Swiper>
     </div>
   );
