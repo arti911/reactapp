@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/150.b7652e4d.chunk.css","mappings":"AAEA,MACE,YAAa","sources":["pages/Main/style.scss"],"sourcesContent":["$parent: main;\r\n\r\n.#{$parent} {\r\n  padding: 15px;\r\n}\r\n"],"names":[],"sourceRoot":""}
