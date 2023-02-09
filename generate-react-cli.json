@@ -9,7 +9,7 @@
       "withLazy": false,
       "withStory": true,
       "withStyle": true,
-      "withTest": true,
+      "withTest": false,
       "withIndex": true,
       "customTemplates": {
         "component": "templates/TemplateName.tsx",

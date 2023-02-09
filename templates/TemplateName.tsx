@@ -2,12 +2,14 @@ import React from "react";
 
 import "./style.scss";
 
-const TemplateName = () => {
+interface ITemplateName {
+  name: string;
+}
+
+export const TemplateName = (props: ITemplateName) => {
   return (
-    <div className="template-name" data-testid="TemplateName">
-      <h1>TemplateName component</h1>
+    <div className="template-name">
+      <h1>{ props.name }</h1>
     </div>
   );
 };
-
-export default TemplateName;
