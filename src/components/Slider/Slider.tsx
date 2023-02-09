@@ -1,4 +1,5 @@
-import React, { cloneElement, ReactElement } from "react";
+import React from "react";
+import { SwiperOptions } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
 
@@ -6,9 +7,14 @@ import 'swiper/css/bundle';
 
 import "./style.scss";
 
-import { ISlider } from "./index.interface";
+interface ISlider<T> {
+  settings: SwiperOptions;
+  items: T[];
+  classPagination?: string;
+  renderItem: (props: any) => any;
+}
 
-const Slider = (props: ISlider) => {
+export const Slider = <T, >(props: ISlider<T>) => {
 
   const lock = (swiper: any) => swiper.disable();
 
@@ -23,7 +29,7 @@ const Slider = (props: ISlider) => {
   }
 
   return (
-    <div className="swiper-slider">
+    <>
       <Swiper
         {...props.settings}
         modules={[Navigation, Pagination]}
@@ -31,14 +37,13 @@ const Slider = (props: ISlider) => {
         onLock={lock}
         onUpdate={update}
       >
-        { props.children.map((item: ReactElement, index: number) => (
+        { props.items.map((item, index) => (
           <SwiperSlide key={index + 1}>
-            {cloneElement(item, { ...item.props })}
+            { props.renderItem(item) }
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+      <div className={`custom-pagination custom-${props.classPagination}-pagination`}></div>
+    </>
   );
 };
-
-export default Slider;
