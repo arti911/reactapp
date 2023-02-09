@@ -8,7 +8,7 @@ import 'swiper/css/bundle';
 import "./style.scss";
 
 interface ISlider<T> {
-  settings: SwiperOptions;
+  settings?: SwiperOptions;
   items: T[];
   classPagination?: string;
   renderItem: (props: any) => any;
