@@ -15,6 +15,7 @@
     "@types/react-dom": "^18.0.8",
     "@types/react-router-dom": "^5.3.2",
     "antd": "^4.24.0",
+    "classnames": "^2.3.2",
     "gh-pages": "^4.0.0",
     "graphql": "^16.3.0",
     "graphql.macro": "^1.4.2",
