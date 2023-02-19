@@ -1,0 +1,130 @@
+.story {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 2;
+  user-select: none;
+  border-radius: 8px;
+  border: 2px solid white;
+  overflow: hidden;
+}
+
+.story-close {
+  position: absolute;
+  top: 28px;
+  right: 20px;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background-color: rgba(#fff, 0.2);
+  cursor: pointer;
+  z-index: 5;
+}
+
+.story-content {
+  position: relative;
+  height: inherit;
+
+  & > * {
+    height: inherit;
+  }
+
+  img,
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  & &__loaded {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    transform: rotate(0deg);
+  }
+
+  & &__loaded-spiner {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-left-color: #ebebeb;
+    animation-name: spiner;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
+  }
+}
+
+.story-progress {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  gap: 16px;
+  padding: 8px 20px;
+  transition: opacity 0.2s;
+  z-index: 1;
+
+  & &__item {
+    position: relative;
+    height: 4px;
+    background-color: rgba(#fff, 0.3);
+    border-radius: 5px;
+    overflow: hidden;
+
+    &--done {
+      .story-progress__item-progress {
+        width: 100%;
+      }
+    }
+
+    &--active {
+      .story-progress__item-progress {
+        animation-name: active-slide;
+        animation-duration: 1200ms;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+      }
+    }
+  }
+
+  & &__item-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: inherit;
+    background-color: white;
+  }
+}
+
+.story-navigation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  height: inherit;
+  z-index: 3;
+}
+
+@keyframes active-slide {
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes spiner {
+  to {
+    transform: rotate(360deg);
+  }
+}
