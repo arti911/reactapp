@@ -1,0 +1,64 @@
+$parent: stories-slider;
+
+.#{$parent} {
+  overflow: hidden;
+
+  &.#{$parent}--desktop {
+    display: flex;
+    align-items: center;
+    max-height: 640px;
+
+    .swiper-slide {
+      width: 300px;
+
+      &:not(.swiper-slide-active) {
+        cursor: pointer;
+
+        .story {
+          pointer-events: none;
+
+          &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 1000;
+            background-color: rgba(#000000, 40%);
+            border-radius: 8px;
+            opacity: 1;
+          }
+
+          & .story-progress {
+            display: none;
+          }
+        }
+      }
+
+      &:not(.swiper-slide-visible) {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      & .story-close {
+        opacity: 0;
+      }
+    }
+  }
+
+  &.#{$parent}--mobile {
+    &.stories-slider-perspective {
+      & .story {
+        transform: translateZ(calc(-1 * var(--swiper-cube-translate-z)));
+        transform-origin: 0% 0% calc(-1 * var(--swiper-cube-translate-z));
+      }
+    }
+  }
+
+  & .swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  & .swiper-slide {
+    height: initial;
+  }
+}
