@@ -62,7 +62,7 @@ export const usePlayStories = (props: IStory) => {
   const debouncePaused = (event: MouseEvent<HTMLDivElement> | TouchEvent<HTMLDivElement>) => {
     event.preventDefault();
 
-    if (props.isMoveSlider && loaded) {
+    if (!props.isMoveSlider && loaded) {
       press.current = setTimeout(() => {
         setInter((value: number) => value - (Date.now() - start.current));
         setPaused(!paused);
@@ -80,7 +80,7 @@ export const usePlayStories = (props: IStory) => {
 
     if (paused) {
       setPaused(!paused);
-    } else if (props.isMoveSlider && !paused) {
+    } else if (!props.isMoveSlider && !paused) {
       selectActions(type);
     }
   };
@@ -102,6 +102,7 @@ export const usePlayStories = (props: IStory) => {
       if (loaded) {
         if (!paused) {
           start.current = Date.now();
+          setInter(props.defaultInterval);
 
           timerId.current = setInterval(next, interval);
         }
