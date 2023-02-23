@@ -6,7 +6,6 @@ import MainPage from "./pages/Main";
 import Aviasales from "./pages/Aviasales";
 import Calculator from "./pages/Calculator";
 import English from "./pages/English";
-import Workshop from "./pages/Workshop";
 
 const { Content, Header } = Layout;
 
@@ -21,7 +20,6 @@ const App = () => (
         <Route path="aviasales" element={<Aviasales />} />
         <Route path="calculator" element={<Calculator />} />
         <Route path="english" element={<English />} />
-        <Route path="workshop" element={<Workshop />} />
       </Routes>
     </Content>
   </HashRouter>
