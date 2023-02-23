@@ -1,7 +1,7 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { SwiperOptions } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper";
+// import { Navigation, Pagination } from "swiper";
 
 import 'swiper/css/bundle';
 
@@ -11,39 +11,28 @@ interface ISlider<T> {
   settings?: SwiperOptions;
   items: T[];
   classPagination?: string;
-  renderItem: (props: any) => any;
+  renderItem: (props: T, index: number) => ReactNode;
 }
 
 export const Slider = <T, >(props: ISlider<T>) => {
-
-  const lock = (swiper: any) => swiper.disable();
-
-  const unlock = (swiper: any) => {
-    swiper.enable();
-    swiper.update();
-  }
-  
-  const update = (swiper: any) => {
-    swiper.slideToLoop(0, 0);
-    swiper.navigation.update();
-  }
 
   return (
     <>
       <Swiper
         {...props.settings}
-        modules={[Navigation, Pagination]}
-        onUnlock={unlock}
-        onLock={lock}
-        onUpdate={update}
+        onTransitionStart={props.settings?.on?.transitionStart}
+        onSliderFirstMove={props.settings?.on?.sliderFirstMove}
+        onTransitionEnd={props.settings?.on?.transitionEnd}
+        onActiveIndexChange={props.settings?.on?.activeIndexChange}
+        onSetTranslate={props.settings?.on?.setTranslate}
       >
         { props.items.map((item, index) => (
-          <SwiperSlide key={index + 1}>
-            { props.renderItem(item) }
+          <SwiperSlide key={index}>
+            { props.renderItem(item, index) }
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className={`custom-pagination custom-${props.classPagination}-pagination`}></div>
+      { props.classPagination && <div className={`custom-pagination custom-${props.classPagination}-pagination`}></div>}
     </>
   );
 };
