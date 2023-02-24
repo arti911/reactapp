@@ -37,7 +37,9 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "generate": "npx generate-react-cli component"
+    "generate": "npx generate-react-cli component",
+    "presurge": "set PUBLIC_URL=/&& npm run build && copy CNAME build",
+    "surge": "surge build"
   },
   "eslintConfig": {
     "extends": "react-app"
