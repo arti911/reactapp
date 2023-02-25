@@ -18,7 +18,7 @@ export const useSliderStories = (initialStory: number) => {
   const rootClass = classNames("stories-slider", {
     "stories-slider--desktop": widthDesktop,
     "stories-slider--mobile": !widthDesktop,
-    "stories-slider-perspective": isMoveSlider,
+    "stories-slider-perspective": !isMoveSlider,
   });
 
   const onStartMove = () => setMoveSlider(true);

@@ -102,11 +102,12 @@ export const usePlayStories = (props: IStory) => {
       if (loaded) {
         if (!paused) {
           start.current = Date.now();
-          setInter(props.defaultInterval);
 
           timerId.current = setInterval(next, interval);
         }
       }
+    } else {
+      setInter(props.defaultInterval);
     }
 
     return () => clearInterval(timerId.current);

@@ -43,7 +43,11 @@ export const StoriesSlider = memo((props: IStoriesSlider) => {
             sliderFirstMove: onStartMove,
             transitionEnd: onEndMove,
             activeIndexChange: (swiper) => onSetActiveIndex(swiper.activeIndex),
-            setTranslate: () => (currentIndexActiveStory === 0 || currentIndexActiveStory === props.list.length - 1) && onEndMove(),
+            setTranslate: (_, translate) => {
+              const positionLastSlide = window.innerWidth * (props.list.length - 1);
+
+              (translate === 0 || Math.abs(translate) === positionLastSlide) && onEndMove();
+            },
           },
         }}
         items={props.list}
