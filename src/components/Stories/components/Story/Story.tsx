@@ -1,4 +1,5 @@
 import React, { memo, useEffect, useRef } from "react";
+import classNames from "classnames";
 
 import { usePlayStories } from "components/Stories/hook/usePlayStories";
 
@@ -58,11 +59,7 @@ export const Story = memo((props: IStory) => {
   }, [paused]);
 
   return (
-    <div
-      className="story"
-      onMouseDown={debouncePaused}
-      onTouchStart={debouncePaused}
-    >
+    <div className="story">
       {props.onCloseStories && (
         <button className="story-close" onClick={mouseUp(TYPE_ACTIONS.CLOSE)} />
       )}
@@ -70,13 +67,10 @@ export const Story = memo((props: IStory) => {
         {props.stories.map((_, index: number) => (
           <div
             key={_.id}
-            className={`story-progress__item ${
-              index < currentCount ? "story-progress__item--done" : ""
-            } ${
-              index === currentCount && loaded && props.isActive
-                ? "story-progress__item--active"
-                : ""
-            }`}
+            className={classNames("story-progress__item", {
+              "story-progress__item--done": index < currentCount,
+              "story-progress__item--active": index === currentCount && loaded && props.isActive,
+            })}
             style={{ width: `${100 / props.stories.length}%` }}
           >
             <div
@@ -129,12 +123,16 @@ export const Story = memo((props: IStory) => {
       <div className="story-navigation">
         <div
           className="story-navigation__prev"
+          onMouseDown={debouncePaused}
           onMouseUp={mouseUp(TYPE_ACTIONS.PREV)}
+          onTouchStart={debouncePaused}
           onTouchEnd={mouseUp(TYPE_ACTIONS.PREV)}
         />
         <div
           className="story-navigation__next"
+          onMouseDown={debouncePaused}
           onMouseUp={mouseUp(TYPE_ACTIONS.NEXT)}
+          onTouchStart={debouncePaused}
           onTouchEnd={mouseUp(TYPE_ACTIONS.NEXT)}
         />
       </div>

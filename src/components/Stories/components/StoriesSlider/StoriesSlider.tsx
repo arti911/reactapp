@@ -30,7 +30,8 @@ export const StoriesSlider = memo((props: IStoriesSlider) => {
     onStartMove,
     onEndMove,
     onSetActiveIndex,
-  } = useSliderStories(props.initialSlide);
+    onTranslate
+  } = useSliderStories(props);
 
   return (
     <div className={rootClass}>
@@ -42,12 +43,8 @@ export const StoriesSlider = memo((props: IStoriesSlider) => {
             transitionStart: onStartMove,
             sliderFirstMove: onStartMove,
             transitionEnd: onEndMove,
-            activeIndexChange: (swiper) => onSetActiveIndex(swiper.activeIndex),
-            setTranslate: (_, translate) => {
-              const positionLastSlide = window.innerWidth * (props.list.length - 1);
-
-              (translate === 0 || Math.abs(translate) === positionLastSlide) && onEndMove();
-            },
+            activeIndexChange: onSetActiveIndex,
+            setTranslate: onTranslate,
           },
         }}
         items={props.list}

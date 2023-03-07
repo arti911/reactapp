@@ -1,15 +1,20 @@
 import { useState } from "react";
 import classNames from "classnames";
+import Swiper from "swiper";
+
+import { IStoriesSlider } from "components/Stories/components/StoriesSlider";
 
 import {
   desktopSettings,
   mobileSettings,
 } from "components/Stories/components/StoriesSlider/settings";
 
-export const useSliderStories = (initialStory: number) => {
+export const useSliderStories = (props: IStoriesSlider) => {
+  const { initialSlide, list } = props;
+
   const [isMoveSlider, setMoveSlider] = useState(false);
   const [currentIndexActiveStory, setCurrentIndexActiveStory] =
-    useState(initialStory);
+    useState(initialSlide);
 
   const widthDesktop = window.innerWidth >= 960;
 
@@ -25,7 +30,13 @@ export const useSliderStories = (initialStory: number) => {
 
   const onEndMove = () => setMoveSlider(false);
 
-  const onSetActiveIndex = (index: number) => setCurrentIndexActiveStory(index);
+  const onSetActiveIndex = (swiper: Swiper) => setCurrentIndexActiveStory(swiper.activeIndex);
+
+  const onTranslate = (_: Swiper, translate: number) => {
+    const positionLastSlide = window.innerWidth * (list.length - 1);
+
+    if (translate === 0 || Math.abs(translate) === positionLastSlide) onEndMove();
+  };
 
   return {
     currentIndexActiveStory,
@@ -35,5 +46,6 @@ export const useSliderStories = (initialStory: number) => {
     onStartMove,
     onEndMove,
     onSetActiveIndex,
+    onTranslate
   };
 };
