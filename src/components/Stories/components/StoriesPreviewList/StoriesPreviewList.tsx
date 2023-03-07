@@ -1,7 +1,10 @@
 import React, { memo } from 'react';
-import { Button } from "antd";
 
-import { IStoriesPreview } from 'components/Stories/components/StoriesPreview';
+import { IStoriesPreview, StoriesPreview } from 'components/Stories/components/StoriesPreview';
+import { Slider } from 'components/Slider';
+import { settings } from './settings';
+
+import "./style.scss";
 
 interface IStoriesPreviewList {
   list: IStoriesPreview[];
@@ -9,16 +12,11 @@ interface IStoriesPreviewList {
 }
 
 export const StoriesPreviewList = memo((props: IStoriesPreviewList) => (
-  <div className="stories-preview-list">
-    {props.list.map((item, index: number) => (
-        <Button
-          key={item.id}
-          type="primary"
-          onClick={() => props.onOpenStories(index, true)}
-          className="stories-preview"
-        >
-          {`${item.name}`}
-        </Button>
-      ))}
+  <div className="stories-preview-slider">
+    <Slider
+      settings={settings}
+      items={props.list}
+      renderItem={(item, index) => <StoriesPreview previewImage={item.previewImage} onOpen={() => props.onOpenStories(index, true)}  />}
+    />
   </div>
 ));

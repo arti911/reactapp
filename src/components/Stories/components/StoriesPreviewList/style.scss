@@ -1,0 +1,7 @@
+$parent: stories-preview-slider;
+
+.#{$parent} {
+  & .swiper-slide {
+    width: auto;
+  }
+}
