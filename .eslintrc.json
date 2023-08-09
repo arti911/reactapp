@@ -1,0 +1,95 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb",
+    "airbnb/hooks",
+    "airbnb-typescript",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:jsx-a11y/recommended",
+    "plugin:storybook/recommended",
+    "plugin:compat/recommended",
+    "plugin:sonarjs/recommended",
+    "plugin:no-use-extend-native/recommended",
+    "plugin:promise/recommended",
+    "plugin:optimize-regex/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "overrides": [
+    {
+      "files": ["**/*.stories.*"],
+      "rules": {
+        "import/no-anonymous-default-export": "off",
+        "import/no-extraneous-dependencies": [
+          "error",
+          {
+            "devDependencies": ["**/*.stories.*"]
+          }
+        ]
+      }
+    }
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "react",
+    "react-hooks",
+    "@typescript-eslint",
+    "import",
+    "jsx-a11y",
+    "json-files",
+    "sonarjs",
+    "no-use-extend-native",
+    "promise",
+    "optimize-regex",
+    "compat",
+    "no-loops",
+    "prettier"
+  ],
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    },
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "react/react-in-jsx-scope": "off",
+    "react/function-component-definition": [2, { "namedComponents": "arrow-function" }],
+    "camelcase": "error",
+    "spaced-comment": "error",
+    "quotes": ["error", "single"],
+    "jsx-quotes": ["error", "prefer-double"],
+    "no-duplicate-imports": "error",
+    "import/order": [
+      2,
+      {
+        "groups": ["external", "builtin", "index", "sibling", "parent", "internal", "type"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "newlines-between": "always-and-inside-groups"
+      }
+    ],
+    "no-loops/no-loops": "error"
+  }
+}
