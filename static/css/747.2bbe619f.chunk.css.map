@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/747.2bbe619f.chunk.css","mappings":"AAEA,iBACI,YAAa","sources":["pages/English/components/PresentSimple/style.scss"],"sourcesContent":["$parent: english-content;\r\n\r\n.#{$parent} {\r\n    padding: 15px;\r\n}"],"names":[],"sourceRoot":""}
