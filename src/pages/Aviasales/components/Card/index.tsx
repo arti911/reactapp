@@ -1,5 +1,3 @@
-import React from "react";
-
 import Information from "./Information";
 
 import ICard from "./index.interface";
@@ -10,12 +8,11 @@ const Card = (props: ICard) => (
   <div className="card">
     <header className="card__header">
       <div className="card__price">{props.price} Р</div>
-      <img
-        src={`https://pics.avs.io/99/36/${props.carrier}.png`}
-        alt={props.carrier}
-      />
+      <img src={`https://pics.avs.io/99/36/${props.carrier}.png`} alt={props.carrier} />
     </header>
-    {props.segments.map((item) => <Information {...item} key={item.duration} />)}
+    {props.segments.map((item) => (
+      <Information {...item} key={item.duration} />
+    ))}
   </div>
 );
 

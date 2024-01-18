@@ -1,13 +1,22 @@
-import { IResponseTickets, ISearchId } from "../index.interface";
+import { TicketsResponse } from "../index.interface";
 
 const PATH_GET_SEARCH_ID = "https://front-test.beta.aviasales.ru/search";
 const PATH_GET_TICKETS = "https://front-test.beta.aviasales.ru/tickets";
 
-export const getSearchId = async () => {
-  const data = await fetch(PATH_GET_SEARCH_ID);
-  const response: ISearchId = await data.json();
+export const getSearchId = async <T>(): Promise<T | undefined> => {
+  try {
+    const response = await fetch(PATH_GET_SEARCH_ID);
 
-  return response;
+    if (response.ok) {
+      const data = (await response.json()) as T;
+
+      return data;
+    }
+
+    throw new Error(response.statusText);
+  } catch (e) {
+    console.log("🚀 ~ getSearchId ~ e:", e);
+  }
 };
 
 export const getTickets = async (searchId: string) => {
@@ -16,9 +25,9 @@ export const getTickets = async (searchId: string) => {
   while (status) {
     try {
       const data = await fetch(`${PATH_GET_TICKETS}?searchId=${searchId}`);
-  
+
       if (data.status >= 200 && data.status <= 299) {
-        const response: IResponseTickets = await data.json();
+        const response = (await data.json()) as TicketsResponse;
         return response;
       } else {
         status = false;
@@ -26,7 +35,7 @@ export const getTickets = async (searchId: string) => {
       }
     } catch (error) {
       status = true;
-      console.log("---data", error);
+      console.log("🚀 ~ getTickets ~ error:", error);
     }
   }
 };

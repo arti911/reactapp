@@ -4,19 +4,25 @@ import { filterOfTransfers } from "./filtering";
 import ICard from "../components/Card/index.interface";
 
 import { IInformation } from "../components/Card/Information/index.interface";
+import { CheckboxValueType } from "antd/lib/checkbox/Group";
 
-const sumDurationStops = (ticket: Array<IInformation>) => ticket.reduce((acc, item) => acc + item.duration, 0);
+const sumDurationStops = (ticket: Array<IInformation>) =>
+  ticket.reduce((acc, item) => acc + item.duration, 0);
 
-export const filteringTickets = (tickets: Array<ICard>, parameter: string, stops: Array<string>) => {
+export const filteringTickets = (
+  tickets: Array<ICard>,
+  parameter: string,
+  stops: CheckboxValueType[],
+) => {
   let list: Array<ICard> = [];
 
   if (parameter === SORT.CHEAP) {
-    list= tickets.sort((a, b) => a.price - b.price)
+    list = tickets.sort((a, b) => a.price - b.price);
   } else if (parameter === SORT.FAST) {
     list = tickets.sort((a, b) => sumDurationStops(a.segments) - sumDurationStops(b.segments));
   }
 
-  list= filterOfTransfers(list, stops);
+  list = filterOfTransfers(list, stops);
 
   return list;
 };
@@ -66,4 +72,4 @@ export const stopsCount = (count: number): string => {
   }
 
   return message.toUpperCase();
-}
+};

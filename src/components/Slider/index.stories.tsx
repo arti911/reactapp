@@ -1,4 +1,3 @@
-import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
 import { Slider as SliderComponent } from ".";
@@ -13,11 +12,9 @@ export default {
       "//images.unsplash.com/photo-1555353540-64580b51c258?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2426&q=80",
     ],
     renderItem: (item: string) => <Image src={item} />,
-  }
+  },
 } as ComponentMeta<typeof SliderComponent>;
 
-const Template: ComponentStory<typeof SliderComponent> = (args) => (
-  <SliderComponent {...args} />
-);
+const Template: ComponentStory<typeof SliderComponent> = (args) => <SliderComponent {...args} />;
 
 export const Slider = Template.bind({});

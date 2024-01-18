@@ -1,4 +1,4 @@
-export interface ISchema {
+export interface SchemaDTO {
   title: string;
   rule: string;
   examples: string[];
@@ -6,5 +6,5 @@ export interface ISchema {
 
 export interface IDataItem {
   title: string;
-  proposalSchemes: ISchema[];
+  proposalSchemes: SchemaDTO[];
 }

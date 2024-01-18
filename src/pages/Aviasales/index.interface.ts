@@ -5,11 +5,11 @@ export interface ITickets {
   viewTickets: Array<ICard>;
 }
 
-export interface ISearchId {
+export interface SearchIdResponse {
   searchId: string;
 }
 
-export interface IResponseTickets {
+export interface TicketsResponse {
   tickets: Array<ICard>;
   stop: boolean;
 }

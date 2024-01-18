@@ -1,15 +1,15 @@
-import React from "react";
-
 import "./style.scss";
 
-interface ITemplateName {
+interface TemplateNameProps {
   name: string;
 }
 
-export const TemplateName = (props: ITemplateName) => {
+export const TemplateName = (props: TemplateNameProps) => {
+  const { name } = props;
+
   return (
     <div className="template-name">
-      <h1>{ props.name }</h1>
+      <h1>{name}</h1>
     </div>
   );
 };
