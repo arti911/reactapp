@@ -1,15 +1,16 @@
-import React, { FC } from "react";
-
 import PresentContinuos from "../PresentContinuos";
-
-import { IPresentSimple } from "./index.interface";
+import { SchemaDTO } from "../../index.interface";
 
 import "./style.scss";
 
-const PresentSimple: FC<IPresentSimple> = (props) => (
+interface PresentSimpleProps {
+  schemes: SchemaDTO[];
+}
+
+const PresentSimple = ({ schemes }: PresentSimpleProps) => (
   <section className="english-content">
-    {props.schemes.map((item) => (
-      <PresentContinuos {...item} />
+    {schemes.map((item) => (
+      <PresentContinuos {...item} key={item.title} />
     ))}
   </section>
 );

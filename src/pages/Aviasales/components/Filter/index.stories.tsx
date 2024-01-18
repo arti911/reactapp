@@ -1,11 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import Filter from "./index";
+import { Filter, FilterProps } from "./index";
 
 import { STOPS } from "../../constants";
-
-import IFilter from "./index.interface";
 
 export default {
   title: "Filter",
@@ -19,7 +16,7 @@ export default {
   ],
 } as Meta;
 
-const Template: Story<IFilter> = (args) => <Filter {...args} />;
+const Template: Story<FilterProps> = (args) => <Filter {...args} />;
 
 export const Transfer = Template.bind({});
 Transfer.args = {

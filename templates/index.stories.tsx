@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from "react";
+
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
 import { TemplateName as TemplateNameComponent } from '.';
@@ -13,6 +13,6 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof TemplateNameComponent>;
 
-const Template : ComponentStory<typeof TemplateNameComponent> = (args) => <TemplateNameComponent {...args}/>;
+const Template: ComponentStory<typeof TemplateNameComponent> = (args) => <TemplateNameComponent {...args} />;
 
 export const TemplateName = Template.bind({});

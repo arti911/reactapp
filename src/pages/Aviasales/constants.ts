@@ -1,7 +1,7 @@
 interface ISort {
   CHEAP: string;
   FAST: string;
-};
+}
 
 export const SORT: ISort = {
   CHEAP: "1",
@@ -11,7 +11,7 @@ export const SORT: ISort = {
 interface ITabs {
   key: string;
   title: string;
-};
+}
 
 export const TABS: Array<ITabs> = [
   {
@@ -28,7 +28,7 @@ export const STOPS = {
   0: "Без пересадок",
   1: "1 пересадка",
   2: "2 пересадки",
-  3: "3 пересадки"
+  3: "3 пересадки",
 };
 
 export const LIMIT: number = 5;
@@ -36,11 +36,11 @@ export const LIMIT: number = 5;
 interface IFilters {
   title: string;
   items: Array<string>;
-};
+}
 
 export const FILTERS: Array<IFilters> = [
   {
     title: "Количество пересадок",
     items: Object.values(STOPS),
-  }
-]
+  },
+];

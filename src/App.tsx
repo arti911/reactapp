@@ -1,11 +1,10 @@
-import React from "react";
 import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import { Layout } from "antd";
 
-import MainPage from "./pages/Main";
-import Aviasales from "./pages/Aviasales";
-import Calculator from "./pages/Calculator";
-import English from "./pages/English";
+import MainPage from "pages/Main";
+import Aviasales from "pages/Aviasales";
+import Calculator from "pages/Calculator";
+import English from "pages/English";
 
 const { Content, Header } = Layout;
 

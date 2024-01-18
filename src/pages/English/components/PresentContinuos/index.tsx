@@ -1,32 +1,35 @@
-import React, { FC } from "react";
 import { Typography, Divider, Card, Row, Col } from "antd";
 
-import { ISchema } from "../../index.interface";
+import { SchemaDTO } from "../../index.interface";
 
 const { Title, Paragraph } = Typography;
 
-const PresentContinuos: FC<ISchema> = (props) => (
-  <>
-    <Title level={4}>{props.title}</Title>
+const PresentContinuos = (props: SchemaDTO) => {
+  const { title, rule, examples } = props;
 
-    <Row gutter={[16, 16]} justify="center">
-      <Col>
-        <Card title="Правило">
-          <Paragraph>{props.rule}</Paragraph>
-        </Card>
-      </Col>
+  return (
+    <>
+      <Title level={4}>{title}</Title>
 
-      <Col>
-        <Card title="Пример">
-          {props.examples.map((item) => (
-            <Paragraph>{item}</Paragraph>
-          ))}
-        </Card>
-      </Col>
-    </Row>
+      <Row gutter={[16, 16]} justify="center">
+        <Col>
+          <Card title="Правило">
+            <Paragraph>{rule}</Paragraph>
+          </Card>
+        </Col>
 
-    <Divider />
-  </>
-);
+        <Col>
+          <Card title="Пример">
+            {examples.map((item) => (
+              <Paragraph key={item}>{item}</Paragraph>
+            ))}
+          </Card>
+        </Col>
+      </Row>
+
+      <Divider />
+    </>
+  );
+};
 
 export default PresentContinuos;

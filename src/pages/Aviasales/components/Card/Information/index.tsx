@@ -1,5 +1,3 @@
-import React from "react";
-
 import { formatTime, range, stopsCount } from "../../../utils";
 
 import { IInformation } from "./index.interface";

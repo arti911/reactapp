@@ -1,4 +1,3 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
 
 import ButtonMain from "./index";
@@ -18,8 +17,8 @@ export default {
       },
     },
     onClickHandler: {
-      action: "clicked"
-    }
+      action: "clicked",
+    },
   },
 } as Meta;
 

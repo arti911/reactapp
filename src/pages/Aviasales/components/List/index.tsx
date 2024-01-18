@@ -1,5 +1,3 @@
-import React from "react";
-
 import Card from "../Card";
 
 import IList from "./index.interface";

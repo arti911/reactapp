@@ -1,4 +1,3 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
 
 import Information from "./index";
@@ -10,7 +9,13 @@ export default {
   component: Information,
 } as Meta;
 
-const Template: Story<ISegments> = (args) => <>{args.segments.map((item) => <Information {...item} key={item.duration} />)}</>;
+const Template: Story<ISegments> = (args) => (
+  <>
+    {args.segments.map((item) => (
+      <Information {...item} key={item.duration} />
+    ))}
+  </>
+);
 
 export const Flight = Template.bind({});
 Flight.args = {
