@@ -4,16 +4,16 @@ $parent: aviasales;
   padding: 0 15px 70px;
   background-color: #f3f7fa;
 
-  @media (min-width: 1200px) {
-    padding: 50px 103px;
-  }
-
   &__wrapper {
     display: grid;
     gap: 20px;
 
-    @media (min-width: 768px) {
+    @media (width >= 768px) {
       grid-template-columns: 232px minmax(320px, 502px);
     }
+  }
+
+  @media (width >= 1200px) {
+    padding: 50px 103px;
   }
 }
