@@ -37,8 +37,9 @@
     "presurge": "set PUBLIC_URL=/&& npm run build && copy CNAME build",
     "surge": "surge build",
     "lint": "eslint --ext .{js,jsx,ts,tsx,json} src",
-    "lint:fix": "eslint --fix .{js,jsx,ts,tsx,json} src",
-    "format": "prettier --write src/**/*.{js,jsx,ts,tsx,css,md,json} --config ./.prettierrc"
+    "lint:fix": "eslint --fix --ext .{js,jsx,ts,tsx,json} src",
+    "format": "prettier --check *.{js,jsx,ts,tsx,css,md,json} src --config ./.prettierrc",
+    "format:fix": "prettier --write *.{js,jsx,ts,tsx,css,md,json} src --config ./.prettierrc"
   },
   "eslintConfig": {
     "extends": "react-app"
