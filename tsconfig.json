@@ -1,11 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "baseUrl": "src",
+    "target": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -18,7 +15,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "noImplicitAny": true,
     "noImplicitThis": true,
     "strictNullChecks": true,
@@ -27,7 +24,5 @@
     "strictPropertyInitialization": true,
     "noUncheckedIndexedAccess": true
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
